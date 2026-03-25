@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lời chúc sinh nhật 🌸</title>
+    <style>
+        @font-face {
+            font-family: 'ICIEL';
+            src: url('ICIEL-Bree-Serif.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'FC-Cotton-Cloud';
+            src: url('FC-Cotton-Cloud.otf') format('opentype');
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --rose: #f2c4ce;
+            --blush: #f9dde3;
+            --petal: #fdf0f3;
+            --deep-rose: #e8a0b0;
+            --gold: #c9a96e;
+            --text: #5a3a3a;
+            --muted: #a07070;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'FC-Cotton-Cloud', sans-serif;
+            background: var(--petal);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* floating petals */
+        .petals-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+        .petal {
+            position: absolute;
+            top: -40px;
+            width: 10px; height: 14px;
+            border-radius: 50% 0 50% 0;
+            opacity: 0;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0%   { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+            10%  { opacity: 0.6; }
+            90%  { opacity: 0.4; }
+            100% { transform: translateY(110vh) rotate(360deg) scale(1); opacity: 0; }
+        }
+
+        /* ── layout ── */
+        .page-wrap {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 24px 120px;
+        }
+
+        /* back button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'FC-Cotton-Cloud', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+            transition: color 0.2s;
+        }
+        .back-btn:hover { color: var(--deep-rose); }
+        .back-btn .arrow { font-size: 1rem; }
+
+        /* page header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 52px;
+        }
+        .page-header .emoji { font-size: 2.2rem; display: block; margin-bottom: 10px; animation: float-icon 3s ease-in-out infinite; }
+        @keyframes float-icon { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+        .page-header h1 {
+            font-family: 'FC-Cotton-Cloud', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        .page-header h1 em { font-style: italic; color: var(--gold); }
+        .page-header .subtitle {
+            margin-top: 10px;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+        .divider {
+            display: flex; align-items: center; justify-content: center; gap: 12px; margin: 20px auto;
+        }
+        .divider::before, .divider::after {
+            content: ''; display: block; width: 60px; height: 1px;
+            background: linear-gradient(to right, transparent, var(--rose));
+        }
+        .divider::after { background: linear-gradient(to left, transparent, var(--rose)); }
+        .divider-icon { font-size: 0.9rem; color: var(--rose); }
+
+        /* ── FORM ── */
+        .wish-form-card {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(242,196,206,0.4);
+            border-radius: 18px;
+            padding: 36px 32px;
+            box-shadow: 0 8px 40px rgba(242,196,206,0.25);
+            margin-bottom: 52px;
+            position: relative;
+            overflow: hidden;
+        }
+        .wish-form-card::before {
+            content: '❝';
+            position: absolute; top: 12px; left: 22px;
+            font-size: 4rem; color: var(--rose); opacity: 0.2; line-height: 1;
+        }
+        .form-title {
+            font-family: 'FC-Cotton-Cloud', sans-serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin-bottom: 22px;
+            letter-spacing: 0.05em;
+        }
+        .field { margin-bottom: 18px; }
+        .field label {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 7px;
+        }
+        .field input, .field textarea {
+            width: 100%;
+            background: rgba(253,240,243,0.7);
+            border: 1px solid rgba(242,196,206,0.5);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-family: 'ICIEL', serif;
+            font-size: 1rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            resize: none;
+        }
+        .field input:focus, .field textarea:focus {
+            border-color: var(--rose);
+            box-shadow: 0 0 0 3px rgba(242,196,206,0.25);
+        }
+        .field textarea { min-height: 110px; line-height: 1.7; }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 32px;
+            font-family: 'FC-Cotton-Cloud', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(242,196,206,0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 6px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(242,196,206,0.65);
+        }
+        .submit-btn:active { transform: scale(0.97); }
+
+        /* success toast */
+        .toast {
+            position: fixed;
+            bottom: 32px; left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(242,196,206,0.5);
+            border-radius: 50px;
+            padding: 12px 26px;
+            font-family: 'FC-Cotton-Cloud', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text);
+            box-shadow: 0 8px 32px rgba(242,196,206,0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s, transform 0.4s;
+            z-index: 999;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* ── WISHES GRID ── */
+        .wishes-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .wishes-header h2 {
+            font-family: 'FC-Cotton-Cloud', sans-serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+        .wishes-count {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            background: rgba(242,196,206,0.2);
+            border: 1px solid rgba(242,196,206,0.4);
+            border-radius: 50px;
+            padding: 4px 12px;
+        }
+        .wishes-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media(min-width:580px){ .wishes-grid { grid-template-columns: 1fr 1fr; } }
+
+        .wish-card {
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(242,196,206,0.35);
+            border-radius: 16px;
+            padding: 24px 22px 20px;
+            box-shadow: 0 2px 20px rgba(242,196,206,0.18);
+            position: relative;
+            animation: card-in 0.5s ease both;
+        }
+        @keyframes card-in {
+            from { opacity:0; transform: translateY(16px); }
+            to   { opacity:1; transform: translateY(0); }
+        }
+        .wish-card .quote-icon {
+            font-size: 1.6rem; color: var(--rose); opacity: 0.5;
+            line-height: 1; display: block; margin-bottom: 6px;
+        }
+        .wish-card .message {
+            font-family: 'ICIEL', serif;
+            font-size: 0.96rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 16px;
+            white-space: pre-wrap;
+        }
+        .wish-card .meta {
+            display: flex; align-items: center; justify-content: space-between;
+            border-top: 1px solid rgba(242,196,206,0.3);
+            padding-top: 10px;
+        }
+        .wish-card .author {
+            font-family: 'ICIEL', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+        .wish-card .date {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+        .wish-card .delete-btn {
+            position: absolute; top: 12px; right: 14px;
+            background: none; border: none; cursor: pointer;
+            font-size: 0.78rem; color: rgba(160,112,112,0.4);
+            transition: color 0.2s;
+            padding: 2px 4px;
+        }
+        .wish-card .delete-btn:hover { color: #c0392b; }
+
+        .empty-state {
+            text-align: center;
+            padding: 56px 24px;
+            color: var(--muted);
+        }
+        .empty-state .icon { font-size: 2.4rem; display: block; margin-bottom: 12px; }
+        .empty-state p { font-size: 0.85rem; letter-spacing: 0.1em; line-height: 1.7; }
+    </style>
+</head>
+<body>
+
+<div class="petals-canvas" id="petals"></div>
+
+<div class="page-wrap">
+
+    <a class="back-btn" href="index.html">
+        <span class="arrow">←</span> Quay lại bức thư
+    </a>
+
+    <div class="page-header">
+        <span class="emoji">🌸</span>
+        <h1>Những lời chúc<br/><em>dành cho em</em></h1>
+        <div class="divider"><span class="divider-icon">✦</span></div>
+        <p class="subtitle">Ghi lại một lời chúc nhỏ</p>
+    </div>
+
+    <!-- FORM -->
+    <div class="wish-form-card">
+        <p class="form-title">Viết lời chúc của bạn…</p>
+        <form id="wishForm" onsubmit="submitWish(event)">
+            <div class="field">
+                <label for="authorInput">Tên của bạn</label>
+                <input id="authorInput" type="text" placeholder="Ví dụ: Anh, Mẹ, Bạn thân…" maxlength="60" required />
+            </div>
+            <div class="field">
+                <label for="messageInput">Lời chúc</label>
+                <textarea id="messageInput" placeholder="Viết những gì bạn muốn nói với cô ấy…" maxlength="500" required></textarea>
+            </div>
+            <button class="submit-btn" type="submit">Gửi lời chúc 🌸</button>
+        </form>
+    </div>
+
+    <!-- WISHES LIST -->
+    <div class="wishes-header">
+        <h2>Các lời chúc</h2>
+        <span class="wishes-count" id="wishCount">0 lời chúc</span>
+    </div>
+    <div class="wishes-grid" id="wishGrid">
+        <!-- cards injected by JS -->
+    </div>
+
+</div>
+
+<!-- toast notification -->
+<div class="toast" id="toast">🌸 Lời chúc đã được gửi!</div>
+
+<script>
+/* ── Petals ── */
+(function() {
+    var colours = ['#f2c4ce','#f9dde3','#fdf0f3','#e8a0b0','#c9a96e'];
+    var canvas = document.getElementById('petals');
+    var count = window.innerWidth < 480 ? 12 : 24;
+    for (var i = 0; i < count; i++) {
+        var p = document.createElement('div');
+        p.className = 'petal';
+        p.style.left = Math.random()*100 + '%';
+        p.style.background = colours[Math.floor(Math.random()*colours.length)];
+        p.style.width  = (8+Math.random()*6) + 'px';
+        p.style.height = (10+Math.random()*8) + 'px';
+        p.style.animationDuration  = (6+Math.random()*8)  + 's';
+        p.style.animationDelay     = (-Math.random()*12)  + 's';
+        canvas.appendChild(p);
+    }
+})();
+
+/* ── Storage key ── */
+var STORAGE_KEY = 'birthday_wishes_v1';
+
+function loadWishes() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch(e) { return []; }
+}
+function saveWishes(list) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+/* ── Submit ── */
+function submitWish(e) {
+    e.preventDefault();
+    var author  = document.getElementById('authorInput').value.trim();
+    var message = document.getElementById('messageInput').value.trim();
+    if (!author || !message) return;
+
+    var wishes = loadWishes();
+    var now    = new Date();
+    wishes.unshift({
+        id:      Date.now(),
+        author:  author,
+        message: message,
+        date:    now.toLocaleDateString('vi-VN', { day:'2-digit', month:'2-digit', year:'numeric' })
+    });
+    saveWishes(wishes);
+
+    document.getElementById('wishForm').reset();
+    renderWishes();
+    showToast();
+}
+
+/* ── Delete ── */
+function deleteWish(id) {
+    var wishes = loadWishes().filter(function(w){ return w.id !== id; });
+    saveWishes(wishes);
+    renderWishes();
+}
+
+/* ── Render ── */
+function renderWishes() {
+    var wishes = loadWishes();
+    var grid   = document.getElementById('wishGrid');
+    var count  = document.getElementById('wishCount');
+
+    count.textContent = wishes.length + ' lời chúc';
+
+    if (wishes.length === 0) {
+        grid.innerHTML = '<div class="empty-state">' +
+            '<span class="icon">🌷</span>' +
+            '<p>Chưa có lời chúc nào.<br/>Hãy là người đầu tiên!</p>' +
+            '</div>';
+        return;
+    }
+
+    grid.innerHTML = wishes.map(function(w) {
+        return '<div class="wish-card">' +
+            '<button class="delete-btn" onclick="deleteWish(' + w.id + ')" title="Xóa">✕</button>' +
+            '<span class="quote-icon">❝</span>' +
+            '<p class="message">' + escapeHTML(w.message) + '</p>' +
+            '<div class="meta">' +
+            '<span class="author">― ' + escapeHTML(w.author) + '</span>' +
+            '<span class="date">' + w.date + '</span>' +
+            '</div>' +
+            '</div>';
+    }).join('');
+}
+
+function escapeHTML(str) {
+    return String(str)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;');
+}
+
+/* ── Toast ── */
+function showToast() {
+    var t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+/* initialise */
+renderWishes();
+</script>
+</body>
+</html>
