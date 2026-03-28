@@ -84,8 +84,8 @@ function buildFlowerHTML() {
     return '' +
         /* message overlay */
         '<div class="flower-message">' +
-            '<h2>🌸 Happy Birthday 🌸</h2>' +
-            '<p>Gửi đến em yêu của anh</p>' +
+        '<h2>🌸Happy Birthday🌸</h2>' +
+
         '</div>' +
 
         /* night sky */
@@ -94,83 +94,83 @@ function buildFlowerHTML() {
         /* flowers container */
         '<div class="flowers">' +
 
-            /* flower 1 */
-            '<div class="flower flower--1">' +
-                '<div class="flower__leafs flower__leafs--1">' + _flLeafs() + '</div>' +
-                '<div class="flower__line">' + _lineLeafs(6) + '</div>' +
-            '</div>' +
+        /* flower 1 */
+        '<div class="flower flower--1">' +
+        '<div class="flower__leafs flower__leafs--1">' + _flLeafs() + '</div>' +
+        '<div class="flower__line">' + _lineLeafs(6) + '</div>' +
+        '</div>' +
 
-            /* flower 2 */
-            '<div class="flower flower--2">' +
-                '<div class="flower__leafs flower__leafs--2">' + _flLeafs() + '</div>' +
-                '<div class="flower__line">' + _lineLeafs(4) + '</div>' +
-            '</div>' +
+        /* flower 2 */
+        '<div class="flower flower--2">' +
+        '<div class="flower__leafs flower__leafs--2">' + _flLeafs() + '</div>' +
+        '<div class="flower__line">' + _lineLeafs(4) + '</div>' +
+        '</div>' +
 
-            /* flower 3 */
-            '<div class="flower flower--3">' +
-                '<div class="flower__leafs flower__leafs--3">' + _flLeafs() + '</div>' +
-                '<div class="flower__line">' + _lineLeafs(4) + '</div>' +
-            '</div>' +
+        /* flower 3 */
+        '<div class="flower flower--3">' +
+        '<div class="flower__leafs flower__leafs--3">' + _flLeafs() + '</div>' +
+        '<div class="flower__line">' + _lineLeafs(4) + '</div>' +
+        '</div>' +
 
-            /* long stem */
-            '<div class="grow-ans" style="--d:1.2s">' +
-                '<div class="flower__g-long">' +
-                    '<div class="flower__g-long__top"></div>' +
-                    '<div class="flower__g-long__bottom"></div>' +
-                '</div>' +
-            '</div>' +
+        /* long stem */
+        '<div class="grow-ans" style="--d:1.2s">' +
+        '<div class="flower__g-long">' +
+        '<div class="flower__g-long__top"></div>' +
+        '<div class="flower__g-long__bottom"></div>' +
+        '</div>' +
+        '</div>' +
 
-            /* grass 1 */
-            '<div class="growing-grass">' +
-                '<div class="flower__grass flower__grass--1">' +
-                    '<div class="flower__grass--top"></div>' +
-                    '<div class="flower__grass--bottom"></div>' +
-                    _grassLeafs() +
-                '</div>' +
-            '</div>' +
+        /* grass 1 */
+        '<div class="growing-grass">' +
+        '<div class="flower__grass flower__grass--1">' +
+        '<div class="flower__grass--top"></div>' +
+        '<div class="flower__grass--bottom"></div>' +
+        _grassLeafs() +
+        '</div>' +
+        '</div>' +
 
-            /* grass 2 */
-            '<div class="growing-grass">' +
-                '<div class="flower__grass flower__grass--2">' +
-                    '<div class="flower__grass--top"></div>' +
-                    '<div class="flower__grass--bottom"></div>' +
-                    _grassLeafs() +
-                '</div>' +
-            '</div>' +
+        /* grass 2 */
+        '<div class="growing-grass">' +
+        '<div class="flower__grass flower__grass--2">' +
+        '<div class="flower__grass--top"></div>' +
+        '<div class="flower__grass--bottom"></div>' +
+        _grassLeafs() +
+        '</div>' +
+        '</div>' +
 
-            /* right side leaves */
-            '<div class="grow-ans" style="--d:2.4s">' +
-                '<div class="flower__g-right flower__g-right--1"><div class="leaf"></div></div>' +
-            '</div>' +
-            '<div class="grow-ans" style="--d:2.8s">' +
-                '<div class="flower__g-right flower__g-right--2"><div class="leaf"></div></div>' +
-            '</div>' +
+        /* right side leaves */
+        '<div class="grow-ans" style="--d:2.4s">' +
+        '<div class="flower__g-right flower__g-right--1"><div class="leaf"></div></div>' +
+        '</div>' +
+        '<div class="grow-ans" style="--d:2.8s">' +
+        '<div class="flower__g-right flower__g-right--2"><div class="leaf"></div></div>' +
+        '</div>' +
 
-            /* front leaves */
-            '<div class="grow-ans" style="--d:2.8s">' +
-                '<div class="flower__g-front">' +
-                    _gFrontLeafs() +
-                    '<div class="flower__g-front__line"></div>' +
-                '</div>' +
-            '</div>' +
+        /* front leaves */
+        '<div class="grow-ans" style="--d:2.8s">' +
+        '<div class="flower__g-front">' +
+        _gFrontLeafs() +
+        '<div class="flower__g-front__line"></div>' +
+        '</div>' +
+        '</div>' +
 
-            /* front right plant */
-            '<div class="grow-ans" style="--d:3.2s">' +
-                '<div class="flower__g-fr">' +
-                    '<div class="leaf"></div>' +
-                    _gFrLeafs() +
-                '</div>' +
-            '</div>' +
+        /* front right plant */
+        '<div class="grow-ans" style="--d:3.2s">' +
+        '<div class="flower__g-fr">' +
+        '<div class="leaf"></div>' +
+        _gFrLeafs() +
+        '</div>' +
+        '</div>' +
 
-            /* long grass groups */
-            _longG(0, ['3s','2.2s','3.4s','3.6s']) +
-            _longG(1, ['3.6s','3.8s','4s','4.2s']) +
-            _longG(2, ['4s','4.2s','4.4s','4.6s']) +
-            _longG(3, ['4s','4.2s','3s','3.6s']) +
-            _longG(4, ['4s','4.2s','3s','3.6s']) +
-            _longG(5, ['4s','4.2s','3s','3.6s']) +
-            _longG(6, ['4.2s','4.4s','4.6s','4.8s']) +
-            _longG(7, ['3s','3.2s','3.5s','3.6s']) +
+        /* long grass groups */
+        _longG(0, ['3s', '2.2s', '3.4s', '3.6s']) +
+        _longG(1, ['3.6s', '3.8s', '4s', '4.2s']) +
+        _longG(2, ['4s', '4.2s', '4.4s', '4.6s']) +
+        _longG(3, ['4s', '4.2s', '3s', '3.6s']) +
+        _longG(4, ['4s', '4.2s', '3s', '3.6s']) +
+        _longG(5, ['4s', '4.2s', '3s', '3.6s']) +
+        _longG(6, ['4.2s', '4.4s', '4.6s', '4.8s']) +
+        _longG(7, ['3s', '3.2s', '3.5s', '3.6s']) +
 
         '</div>'; /* end .flowers */
 }
