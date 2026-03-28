@@ -85,7 +85,6 @@ function buildFlowerHTML() {
         /* message overlay */
         '<div class="flower-message">' +
             '<h2>🌸 Happy Birthday 🌸</h2>' +
-            '<p>Gửi đến em yêu của anh</p>' +
         '</div>' +
 
         /* night sky */

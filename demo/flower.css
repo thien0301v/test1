@@ -460,7 +460,7 @@
     animation-play-state: paused !important;
 }
 
-/* ── "Gửi em yêu" text overlay ── */
+/* ── text overlay ── */
 .flower-screen .flower-message {
     position: absolute;
     top: 15%;
