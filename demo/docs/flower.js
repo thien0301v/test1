@@ -84,7 +84,7 @@ function buildFlowerHTML() {
     return '' +
         /* message overlay */
         '<div class="flower-message">' +
-        '<h2>🌸Happy Birthday🌸</h2>' +
+        '<h2>Happy Birthday</h2>' +
 
         '</div>' +
 
